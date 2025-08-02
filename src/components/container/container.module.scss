@@ -1,0 +1,45 @@
+.container {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1440px;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 185px;
+
+    @media (min-width: 1281px) {
+        border-left: 1px solid rgb(66, 86, 122, 0.1);
+        border-right: 1px solid rgb(66, 86, 122, 0.1);
+
+        &::before {
+            content: '';
+            display: block;
+            width: 5px;
+            height: 120px;
+            position: absolute;
+            top: 177px;
+            left: -1px;
+            background: linear-gradient(#3877EE, #EF5DA8);
+            z-index: 0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        &::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(66, 86, 122, 0.1);
+            z-index: 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        padding-top: 59px;
+    }
+}
