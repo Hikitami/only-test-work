@@ -87,7 +87,7 @@ const CircularDotsSlider = ({
   );
 };
 
-export const TimelineSlider = ({timelineSlides}: {timelineSlides: SwiperData[]}) => {
+export const TimelineSlider = ({ timelineSlides }: { timelineSlides: SwiperData[] }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [loading, setLoading] = useState(false)
   const [prevActiveSlide, setPrevActiveSlide] = useState(0)
@@ -247,7 +247,7 @@ export const TimelineSlider = ({timelineSlides}: {timelineSlides: SwiperData[]})
                 setEnd(swiper.isEnd)
               }}
               breakpoints={{
-                320: {
+                0: {
                   slidesPerView: 1.5,
                   spaceBetween: 25
                 },
@@ -278,28 +278,28 @@ export const TimelineSlider = ({timelineSlides}: {timelineSlides: SwiperData[]})
           <SwiperNavButtons start={start} end={end} swiperInstance={swiperRef.current} />
         )}
       </div>
-        {screenSize.width < 768 && (
-          <div className={styles.timelineSliderNavigate}>
-            <div className={styles.timelineSliderNavigateContainer}>
-              <div className={styles.timelineSliderNavigateCoutns}>
-                <span className={styles.timelineSliderNavigateCount}>{10 > activeSlide + 1 ? '0' + (activeSlide + 1) : activeSlide + 1}</span>/<span className={styles.timelineSliderNavigateCount}>{10 > timelineSlides.length ? '0' + timelineSlides.length : timelineSlides.length}</span>
-              </div>
-              <div className={styles.timelineSliderArrows}>
-                <button onClick={() => handlePrevSlide()} className={`${styles.timelineSliderArrow} ${styles.timelineSliderPrev} ${activeSlide === 0 ? styles.disabled : ''}`} area-label='Предыдущий слайд'>
-                  <ArrowMobile />
-                </button>
-                <button onClick={() => handleNextSlide()} className={`${styles.timelineSliderArrow} ${styles.timelineSliderNext} ${activeSlide === timelineSlides.length - 1 ? styles.disabled : ''}`} area-label='Следующий слайд'>
-                  <ArrowMobile />
-                </button>
-              </div>
+      {screenSize.width < 768 && (
+        <div className={styles.timelineSliderNavigate}>
+          <div className={styles.timelineSliderNavigateContainer}>
+            <div className={styles.timelineSliderNavigateCoutns}>
+              <span className={styles.timelineSliderNavigateCount}>{10 > activeSlide + 1 ? '0' + (activeSlide + 1) : activeSlide + 1}</span>/<span className={styles.timelineSliderNavigateCount}>{10 > timelineSlides.length ? '0' + timelineSlides.length : timelineSlides.length}</span>
             </div>
-            <div className={styles.timelineSliderDots}>
-              {timelineSlides.map((_, i) => (
-                <button key={i} className={`${styles.timelineSliderDot} ${activeSlide == i ? styles.active : ''}`} onClick={() => handleSetActiveSlideClick(i)} area-label={'переход на слайд: ' + (i + 1)}></button>
-              ))}
+            <div className={styles.timelineSliderArrows}>
+              <button onClick={() => handlePrevSlide()} className={`${styles.timelineSliderArrow} ${styles.timelineSliderPrev} ${activeSlide === 0 ? styles.disabled : ''}`} area-label='Предыдущий слайд'>
+                <ArrowMobile />
+              </button>
+              <button onClick={() => handleNextSlide()} className={`${styles.timelineSliderArrow} ${styles.timelineSliderNext} ${activeSlide === timelineSlides.length - 1 ? styles.disabled : ''}`} area-label='Следующий слайд'>
+                <ArrowMobile />
+              </button>
             </div>
           </div>
-        )}
+          <div className={styles.timelineSliderDots}>
+            {timelineSlides.map((_, i) => (
+              <button key={i} className={`${styles.timelineSliderDot} ${activeSlide == i ? styles.active : ''}`} onClick={() => handleSetActiveSlideClick(i)} area-label={'переход на слайд: ' + (i + 1)}></button>
+            ))}
+          </div>
+        </div>
+      )}
     </div >
   );
 };
